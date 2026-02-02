@@ -20,6 +20,7 @@ body {
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 0 20px hotpink;
+  max-width: 90%;
 }
 
 h1 {
@@ -65,19 +66,34 @@ button {
   from { transform: scale(0); opacity: 1; }
   to { transform: scale(3); opacity: 0; }
 }
+
+#loveText {
+  display: none;
+  margin-top: 15px;
+  font-size: 18px;
+  color: #b0005a;
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <h1>Will you be my Valentine? 💖</h1>
+  <h1>Will you be my Valentine, Sakshi Juyal? 💖</h1>
   <img src="photo.jpg">
   <br>
   <button onclick="yes()">Yes 💘</button>
   <button id="noBtn" onmouseover="moveNo()">No 😢</button>
-  <div id="msg" style="display:none;font-size:20px;color:#b0005a;margin-top:10px;">
-    YAY!!! I LOVE YOU 💞
+
+  <div id="loveText">
+    Sakshi Juyal,  
+    every moment with you feels like magic.  
+    You make my world brighter, my heart happier,  
+    and my life more beautiful just by being in it.  
+    I can’t imagine my days without your smile  
+    and my future without your hand in mine.  
+    Will you make this Valentine’s Day  
+    and every day after it special with me? 💕
   </div>
 </div>
 
@@ -100,9 +116,9 @@ function moveNo(){
   b.style.top=Math.random()*80+"vh";
 }
 
-// fireworks
+// fireworks + love text
 function yes(){
-  document.getElementById("msg").style.display="block";
+  document.getElementById("loveText").style.display="block";
   for(let i=0;i<30;i++){
     let f=document.createElement("div");
     f.className="firework";
