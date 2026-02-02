@@ -1,18 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Valentine</title>
+<title>Valentine</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 182, 193, 0.9);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px hotpink;
+}
+
+h1 {
+  color: #d10068;
+}
+
+img {
+  width: 220px;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ff69b4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.heart {
+  position: absolute;
+  color: rgba(255,0,100,0.4);
+  font-size: 20px;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+.firework {
+  position: absolute;
+  font-size: 25px;
+  animation: boom 1.5s forwards;
+}
+
+@keyframes boom {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(3); opacity: 0; }
+}
+</style>
 </head>
-<body style="background:pink; text-align:center; padding-top:100px; font-family:Arial;">
 
+<body>
+
+<div class="container">
   <h1>Will you be my Valentine? 💖</h1>
+  <img src="photo.jpg">
+  <br>
+  <button onclick="yes()">Yes 💘</button>
+  <button id="noBtn" onmouseover="moveNo()">No 😢</button>
+  <div id="msg" style="display:none;font-size:20px;color:#b0005a;margin-top:10px;">
+    YAY!!! I LOVE YOU 💞
+  </div>
+</div>
 
-  <img src="photo.jpg" width="250">
+<script>
+// hearts
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(h);
+}
 
-  <br><br>
+// no button runs
+function moveNo(){
+  let b=document.getElementById("noBtn");
+  b.style.position="absolute";
+  b.style.left=Math.random()*80+"vw";
+  b.style.top=Math.random()*80+"vh";
+}
 
-  <button onclick="alert('YAY! ❤️')">Yes</button>
-  <button onclick="alert('Try again 😏')">No</button>
+// fireworks
+function yes(){
+  document.getElementById("msg").style.display="block";
+  for(let i=0;i<30;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML=Math.random()>0.5?"🎆":"🎇";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1500);
+  }
+}
+</script>
 
 </body>
 </html>
